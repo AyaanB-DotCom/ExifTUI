@@ -1,0 +1,110 @@
+/* Layout and styling. Colours come from the active palette (themes.py) as $nt-* variables,
+   so every theme shares this one stylesheet. Default theme: NECROTERRA. */
+
+Screen { background: $nt-ground; color: $nt-fg; }
+
+/* ---------- top plate ---------- */
+#topbar {
+    height: 3;
+    background: $nt-plate-bg;
+    color: $nt-plate-fg;
+    border: heavy $nt-edge;
+    padding: 0 1;
+}
+#brand { width: auto; text-style: bold; color: $nt-plate-fg; }
+#topstate { width: 1fr; text-align: right; color: $nt-plate-fg; }
+
+/* ---------- panels ---------- */
+#body { height: 1fr; }
+.panel {
+    background: $nt-panel;
+    border: heavy $nt-edge;
+    border-title-color: $nt-title-fg;
+    border-title-background: $nt-title-bg;
+    border-title-style: bold;
+    padding: 0 1;
+}
+.panel:focus-within { border: heavy $nt-edge-focus; border-title-background: $nt-edge; border-title-color: $nt-hl-fg; }
+#artifacts { width: 46%; min-width: 40; }
+#inspect { width: 1fr; }
+#empty { color: $nt-dim; padding: 1 1; }
+#table { background: $nt-panel; height: 1fr; }
+
+DataTable { background: $nt-panel; color: $nt-fg; }
+DataTable > .datatable--header { background: $nt-title-bg; color: $nt-head-fg; text-style: bold; }
+DataTable > .datatable--cursor { background: $nt-hl-bg; color: $nt-hl-fg; text-style: bold; }
+DataTable > .datatable--hover { background: $nt-bar-bg; }
+DataTable:focus > .datatable--cursor { background: $nt-hl-bg; color: $nt-hl-fg; }
+Tree > .tree--guides { color: $nt-dim; }
+Scrollbar { background: $nt-panel; color: $nt-edge; }
+
+/* compact layout (< 100 columns): one panel at a time, Tab swaps them */
+.compact #artifacts { width: 1fr; }
+.compact #inspect { display: none; }
+.compact.view-inspect #artifacts { display: none; }
+.compact.view-inspect #inspect { display: block; }
+
+/* ---------- status box ---------- */
+#status {
+    height: 4;
+    background: $nt-box-bg;
+    color: $nt-box-fg;
+    border: heavy $nt-box-edge;
+    border-title-color: $nt-box-edge;
+    padding: 0 1;
+}
+#activity { height: 1; color: $nt-box-fg; text-style: bold; }
+#bar { height: 1; }
+Bar > .bar--bar { color: $nt-edge; background: $nt-bar-bg; }
+Bar > .bar--complete { color: $nt-ok; }
+ProgressBar { padding: 0; }
+
+Footer { background: $nt-footer-bg; color: $nt-footer-fg; }
+Footer .footer-key--key { background: $nt-key-bg; color: $nt-key-fg; text-style: bold; }
+Footer .footer-key--description { color: $nt-footer-fg; background: $nt-footer-bg; }
+Footer FooterKey:hover { background: $nt-bar-bg; }
+
+/* ---------- dialogs ---------- */
+ModalScreen { align: center middle; background: $nt-ground 70%; }
+.dialog {
+    background: $nt-box-bg;
+    color: $nt-box-fg;
+    border: heavy $nt-box-edge;
+    padding: 1 2;
+    width: 76;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+.dialog-title { text-style: bold; color: $nt-box-accent; margin-bottom: 1; }
+.hint { color: $nt-box-fg 70%; }
+.dialog Input { background: $nt-input-bg; color: $nt-input-fg; border: tall $nt-title-bg; }
+.dialog Input:focus { border: tall $nt-edge; }
+.dialog DirectoryTree { height: 10; background: $nt-input-bg; color: $nt-input-fg; border: tall $nt-title-bg; }
+.dialog DirectoryTree:focus { border: tall $nt-edge; }
+.dialog DirectoryTree > .tree--cursor { background: $nt-hl-bg; color: $nt-hl-fg; }
+.dialog Checkbox { background: $nt-box-bg; color: $nt-box-fg; border: none; padding: 0; }
+.dialog Checkbox:focus { background: $nt-box-bg; text-style: bold; }
+.dialog Checkbox > .toggle--button { background: $nt-input-bg; color: $nt-input-fg; }
+.dialog Checkbox.-on > .toggle--button { background: $nt-edge; color: $nt-hl-fg; }
+.dialog Button { margin-right: 1; min-width: 12; }
+.buttons { height: 3; margin-top: 1; }
+Button { background: $nt-title-bg; color: $nt-title-fg; border: none; height: 3; }
+Button:focus { text-style: bold reverse; }
+Button:hover { background: $nt-bar-bg; }
+Button.-primary { background: $nt-edge; color: $nt-hl-fg; }
+Button.-error { background: $nt-box-edge; color: $nt-hl-fg; }
+#help-body, #confirm-body { height: auto; max-height: 24; overflow-y: auto; }
+.theme-row { height: 1; }
+
+/* ---------- results ---------- */
+#results { padding: 0 1; }
+#purge {
+    height: auto;
+    background: $nt-box-bg;
+    color: $nt-box-fg;
+    border: heavy $nt-box-edge;
+    padding: 0 2;
+}
+#results-table { height: 1fr; margin-top: 1; }
+#detail { height: 6; border: heavy $nt-edge; padding: 0 1; background: $nt-panel; }
