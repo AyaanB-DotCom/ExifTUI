@@ -2,6 +2,9 @@
 
 *Image metadata removal, without memorizing commands.*
 
+<img width="3456" height="2200" alt="Screenshot 2026-10-22 at 9 07 25 PM-clean" src="https://github.com/user-attachments/assets/4973ef8d-7d9d-413a-a11d-b642a771f64e" />
+
+
 ExifTUI is a terminal interface for [ExifTool](https://exiftool.org). You pick images or a
 folder, look at what metadata they carry, write cleaned copies, and then the program re-reads
 each copy and tells you what, if anything, is still embedded. It is Python and
