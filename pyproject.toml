@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exiftui"
+version = "0.1.0"
+description = "Image metadata removal, without memorizing commands. A Textual front end for ExifTool."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = ["textual>=8.2"]
+keywords = ["exif", "metadata", "privacy", "exiftool", "tui", "textual"]
+classifiers = [
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Security",
+]
+
+[project.optional-dependencies]
+# Pillow lets the verifier fully decode JPEG/PNG/WebP/TIFF outputs. Optional.
+verify = ["pillow>=10"]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "ruff>=0.5", "pillow>=10"]
+
+[project.scripts]
+exiftui = "exiftui.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["exiftui*"]
+
+[tool.setuptools.package-data]
+exiftui = ["theme.tcss"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = ["integration: needs a real exiftool binary"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "S", "SIM"]
+ignore = ["S603", "S101"]  # S603: subprocess with argument arrays is the design; S101: asserts in tests
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S"]
